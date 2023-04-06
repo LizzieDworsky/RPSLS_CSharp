@@ -21,12 +21,35 @@ namespace RPSLS
         //Member Methods (CAN DO)
         public void WelcomeMessage()
         {
-            Console.WriteLine("Welcome to RPSLS! Here are the rules:\n");
+            Console.WriteLine(@"
+        Welcome to RPSLS! Here are the rules:
+
+            Rock crushes Scissors
+            Scissors cuts Paper 
+            Paper covers Rock
+            Rock crushes Lizard
+            Lizard poisons Spock
+            Spock smashes Scissors
+            Scissors decapitates Lizard
+            Lizard eats Paper
+            Paper disproves Spock
+            Spock vaporizes Rock
+
+    One to Two Players, Best of three rounds wins!
+
+            ");
         }
 
         public int ChooseNumberOfHumanPlayers()
         {
-            return 0;
+            Console.WriteLine("How many people are playing?");
+            string input = Console.ReadLine();
+            while (input != "1" && input != "2")
+            {
+                Console.WriteLine($"Sorry {input} is not a valid number of players. Please try again.");
+                input = Console.ReadLine();
+            }
+            return int.Parse(input);
         }
 
         public void CreatePlayerObjects(int numberOfHumanPlayers)
@@ -47,6 +70,7 @@ namespace RPSLS
         public void RunGame()
         {
             WelcomeMessage();
+            Console.WriteLine(ChooseNumberOfHumanPlayers());
         }
     }
 }
