@@ -14,7 +14,9 @@ namespace RPSLS
 
         public override void ChooseGesture()
         {
-            throw new NotImplementedException();
+            Random random = new Random();
+            int index = random.Next(gestures.Count);
+            chosenGesture = gestures[index];
         }
     }
 }
