@@ -54,7 +54,19 @@ namespace RPSLS
 
         public void CreatePlayerObjects(int numberOfHumanPlayers)
         {
-
+            if (numberOfHumanPlayers == 1)
+            {
+                Console.WriteLine("Player one please enter your username:");
+                playerOne = new HumanPlayer(Console.ReadLine());
+                playerTwo = new ComputerPlayer();
+            }
+            else if (numberOfHumanPlayers == 2)
+            {
+                Console.WriteLine("Player one please enter your username:");
+                playerOne = new HumanPlayer(Console.ReadLine());
+                Console.WriteLine("Player two please enter your username:");
+                playerTwo = new HumanPlayer(Console.ReadLine());
+            }
         }
 
         public void CompareGestures()
@@ -70,8 +82,7 @@ namespace RPSLS
         public void RunGame()
         {
             WelcomeMessage();
-            playerOne = new ComputerPlayer();
-            playerOne.ChooseGesture();
+            CreatePlayerObjects(ChooseNumberOfHumanPlayers());
         }
     }
 }
