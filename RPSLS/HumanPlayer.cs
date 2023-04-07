@@ -23,7 +23,7 @@ namespace RPSLS
                 "4"
             };
             Console.WriteLine(@"
-        What gesture would you like to select
+    What gesture would you like to select
 
             Please enter:
             0 for Rock
@@ -39,6 +39,7 @@ namespace RPSLS
                 Console.WriteLine($"Sorry {input} is not a valid entry. Please try again.");
                 input = Console.ReadLine();
             }
+            chosenGesture = gestures[int.Parse(input)];
         }
     }
 }

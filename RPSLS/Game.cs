@@ -70,7 +70,8 @@ namespace RPSLS
         public void RunGame()
         {
             WelcomeMessage();
-            Console.WriteLine(ChooseNumberOfHumanPlayers());
+            playerOne = new HumanPlayer("Amy");
+            playerOne.ChooseGesture();
         }
     }
 }
