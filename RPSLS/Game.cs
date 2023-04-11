@@ -25,15 +25,25 @@ namespace RPSLS
         Welcome to RPSLS! Here are the rules:
 
             Rock crushes Scissors
+
             Scissors cuts Paper 
+
             Paper covers Rock
+
             Rock crushes Lizard
+
             Lizard poisons Spock
+
             Spock smashes Scissors
+
             Scissors decapitates Lizard
+
             Lizard eats Paper
+
             Paper disproves Spock
+
             Spock vaporizes Rock
+
 
     One to Two Players, Best of three rounds wins!
 
@@ -69,9 +79,32 @@ namespace RPSLS
             }
         }
 
-        public void CompareGestures()
+        public void CompareGestures(string playerOneGesture, string playerTwoGesture)
         {
-
+            if ((playerOneGesture == "rock" || playerOneGesture == "Spock") && playerTwoGesture == "scissors")
+            {
+                playerOne.score += 1;
+            }
+            else if ((playerOneGesture == "scissors" || playerOneGesture == "lizard") && playerTwoGesture == "paper")
+            {
+                playerOne.score += 1;
+            }
+            else if ((playerOneGesture == "paper" || playerOneGesture == "Spock") && playerTwoGesture == "rock")
+            {
+                playerOne.score += 1;
+            }
+            else if ((playerOneGesture == "rock" || playerOneGesture == "scissors") && playerTwoGesture == "lizard")
+            {
+                playerOne.score += 1;
+            }
+            else if ((playerOneGesture == "lizard" || playerOneGesture == "paper") && playerTwoGesture == "Spock")
+            {
+                playerOne.score += 1;
+            }
+            else
+            {
+                playerTwo.score += 1;
+            }
         }
 
         public void DisplayGameWinner()
@@ -83,6 +116,9 @@ namespace RPSLS
         {
             WelcomeMessage();
             CreatePlayerObjects(ChooseNumberOfHumanPlayers());
+            playerOne.ChooseGesture();
+            playerTwo.ChooseGesture();
+            CompareGestures("lizard", "rock");
         }
     }
 }
