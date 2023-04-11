@@ -25,25 +25,15 @@ namespace RPSLS
         Welcome to RPSLS! Here are the rules:
 
             Rock crushes Scissors
-
             Scissors cuts Paper 
-
             Paper covers Rock
-
             Rock crushes Lizard
-
             Lizard poisons Spock
-
             Spock smashes Scissors
-
             Scissors decapitates Lizard
-
             Lizard eats Paper
-
             Paper disproves Spock
-
             Spock vaporizes Rock
-
 
     One to Two Players, Best of three rounds wins!
 
@@ -81,44 +71,66 @@ namespace RPSLS
 
         public void CompareGestures(string playerOneGesture, string playerTwoGesture)
         {
-            if ((playerOneGesture == "rock" || playerOneGesture == "Spock") && playerTwoGesture == "scissors")
+            if (playerOneGesture == playerTwoGesture)
+            {
+                Console.WriteLine($"Its a tie! Both players choose {playerOneGesture}.");
+            }
+            else if ((playerOneGesture == "rock" || playerOneGesture == "Spock") && playerTwoGesture == "scissors")
             {
                 playerOne.score += 1;
+                Console.WriteLine($"{playerOne.name}'s gesture {playerOneGesture} beats {playerTwo.name}'s {playerTwoGesture}.");
             }
             else if ((playerOneGesture == "scissors" || playerOneGesture == "lizard") && playerTwoGesture == "paper")
             {
                 playerOne.score += 1;
+                Console.WriteLine($"{playerOne.name}'s gesture {playerOneGesture} beats {playerTwo.name}'s {playerTwoGesture}.");
             }
             else if ((playerOneGesture == "paper" || playerOneGesture == "Spock") && playerTwoGesture == "rock")
             {
                 playerOne.score += 1;
+                Console.WriteLine($"{playerOne.name}'s gesture {playerOneGesture} beats {playerTwo.name}'s {playerTwoGesture}.");
             }
             else if ((playerOneGesture == "rock" || playerOneGesture == "scissors") && playerTwoGesture == "lizard")
             {
                 playerOne.score += 1;
+                Console.WriteLine($"{playerOne.name}'s gesture {playerOneGesture} beats {playerTwo.name}'s {playerTwoGesture}.");
             }
             else if ((playerOneGesture == "lizard" || playerOneGesture == "paper") && playerTwoGesture == "Spock")
             {
                 playerOne.score += 1;
+                Console.WriteLine($"{playerOne.name}'s gesture {playerOneGesture} beats {playerTwo.name}'s {playerTwoGesture}.");
             }
             else
             {
                 playerTwo.score += 1;
+                Console.WriteLine($"{playerTwo.name}'s gesture {playerTwoGesture} beats {playerOne.name}'s {playerOneGesture}.");
             }
+            Console.WriteLine($"The scores are now\n{playerOne.name}:{playerOne.score}\n{playerTwo.name}:{playerTwo.score}");
         }
 
         public void DisplayGameWinner()
         {
-
+            if (playerOne.score >= 2)
+            {
+                Console.WriteLine($"{playerOne.name} wins! Congrats!");
+            }
+            else
+            {
+                Console.WriteLine($"{playerTwo.name} wins! Congrats!");
+            }
         }
 
         public void RunGame()
         {
             WelcomeMessage();
             CreatePlayerObjects(ChooseNumberOfHumanPlayers());
-            playerOne.ChooseGesture();
-            playerTwo.ChooseGesture();
-            CompareGestures("lizard", "rock");
+            while (playerOne.score < 2 && playerTwo.score < 2)
+            {
+                playerOne.ChooseGesture();
+                playerTwo.ChooseGesture();
+                CompareGestures(playerOne.chosenGesture, playerTwo.chosenGesture);
+            }
+            DisplayGameWinner();
         }
     }
 }
